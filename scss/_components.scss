@@ -1,0 +1,57 @@
+$color-1: #662d90;
+$color-2: #f5e937;
+$l-device: 1400px;
+$m-device: 900px;
+$s-device: 600px;
+
+body {
+  background: url(../img/background-2.svg);
+  font-family: 'Poppins', sans-serif;
+}
+
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+
+@mixin d($size) {
+  @if $size == l {
+    @media screen and (min-width: $l-device) {
+      @content;
+    }
+  } @else if $size == m {
+    @media screen and (min-width: $m-device) and (max-width: ($l-device - 1)) {
+      @content;
+    }
+  } @else if $size == s {
+    @media screen and (max-width: ($m-device - 1)) {
+      @content;
+    }
+  }
+}
+
+@mixin container {
+  max-width: $l-device;
+  margin: 0 auto;
+  position: relative;
+  @include d(m) {
+    max-width: d(m);
+  }
+  @include d(s) {
+    max-width: $s-device;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.js [data-anime='scroll'] {
+  opacity: 0;
+  transform: translate3d(-30px, 0, 0);
+  transition: 0.3s;
+}
+
+.js [data-anime='scroll'].ativo {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}

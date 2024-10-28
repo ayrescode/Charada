@@ -1,0 +1,35 @@
+.header-bg {
+  background-color: $color-1;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  @include container;
+  align-items: center;
+  img {
+    max-width: 50%;
+    height: auto;
+  }
+}
+
+.header-menu {
+  display: flex;
+  li:last-child {
+    text-transform: uppercase;
+    font-size: 1.1rem;
+  }
+  a {
+    color: white;
+    padding: 20px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    &:hover {
+      color: $color-2;
+    }
+    span {
+      color: $color-2;
+    }
+  }
+}
